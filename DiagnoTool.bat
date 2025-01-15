@@ -9,9 +9,9 @@ if %errorlevel% neq 0 (
 
 :: Comandi con privilegi di amministratore
 echo Il prompt dei comandi e' in esecuzione come amministratore.
-pause
 
 @echo off
+title DiagnoTool_by_Baldo
 setlocal enabledelayedexpansion
 :menu
 cls
@@ -21,6 +21,7 @@ echo ATTENZIONE: UTILIZZARE SOLO SE UTENTI ESPERTI!!!
 echo ================================================================
 echo Tool disponibili:
 echo ================================================================
+echo 0. Esci
 echo 1. Informazioni sul sistema
 echo 2. Controlla lo stato della connessione di rete
 echo 3. Apri Gestione Attivita
@@ -36,10 +37,10 @@ echo 12. Cambio DNS
 echo 13. Rimozione forzata malware (mrt)
 echo 14. Debloating tool
 echo 15. Formattazione Supporto Dati
-echo 16. Esci
 echo ================================================================
 set /p choice="Inserisci il numero della tua scelta (1-15): "
 
+if "%choice%"=="0" goto end
 if "%choice%"=="1" goto info
 if "%choice%"=="2" goto check_network
 if "%choice%"=="3" goto task
@@ -55,7 +56,7 @@ if "%choice%"=="12" goto dns
 if "%choice%"=="13" goto malware
 if "%choice%"=="14" goto debloat
 if "%choice%"=="15" goto erase
-if "%choice%"=="16" goto end
+
 
 echo Scelta non valida! Riprova.
 pause
@@ -211,5 +212,4 @@ goto menu
 
 :end
 echo Uscita dal programma...
-pause
 exit
